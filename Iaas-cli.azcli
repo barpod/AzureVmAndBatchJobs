@@ -1,0 +1,13 @@
+az login
+
+az account list --output tsv
+
+az account show
+
+az group create --name Iaas-cli-rg --location westeurope
+
+az vm create --resource-group Iaas-cli-rg --name Iaas-cli --location westeurope --vnet-name Iaas-cli-vnet --subnet Iaas-cli-subnet --nsg Iaas-cli-nsg --public-ip-address Iaas-cli-ip --image win2016datacenter --admin-username barpod
+
+az vm open-port --port 3389 --resource-group Iaas-cli-rg --name Iaas-cli
+
+az group delete --name Iaas-cli-rg
